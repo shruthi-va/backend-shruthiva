@@ -1,4 +1,4 @@
-package com.chubb.claims.notification;
+package com.chubb.claims.notification.infrastructure.persistence;
 
 import com.chubb.claims.claim.domain.ClaimStatus;
 import jakarta.persistence.Column;

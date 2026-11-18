@@ -1,7 +1,8 @@
-package com.chubb.claims.notification;
+package com.chubb.claims.notification.infrastructure.sender;
 
 import com.chubb.claims.claim.application.ClaimNotificationTarget;
 import com.chubb.claims.claim.domain.ClaimStatus;
+import com.chubb.claims.notification.application.NotificationSender;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

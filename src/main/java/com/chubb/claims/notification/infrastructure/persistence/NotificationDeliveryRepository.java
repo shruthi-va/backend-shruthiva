@@ -1,4 +1,4 @@
-package com.chubb.claims.notification;
+package com.chubb.claims.notification.infrastructure.persistence;
 
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;

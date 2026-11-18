@@ -1,4 +1,4 @@
-package com.chubb.claims.notification;
+package com.chubb.claims.notification.infrastructure.persistence;
 
 import java.util.List;
 import java.util.UUID;

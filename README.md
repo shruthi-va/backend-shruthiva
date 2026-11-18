@@ -2,6 +2,17 @@
 
 A Java 17 / Spring Boot modular-monolith starter for claim intake, review, manager decisions, reporting, and status-change notifications. It provides REST APIs only; Swagger UI is for API exploration and verification, not a claimant-facing frontend.
 
+[View the claims workflow diagram](docs/claims-flow.md).
+
+## Package layout
+
+- `claim.domain` and `claim.application` contain claim state and use cases.
+- `controller` contains the REST controllers and API exception handling.
+- `notification.application` contains notification use cases and module contracts.
+- `notification.infrastructure.kafka` contains Kafka configuration and adapters.
+- `notification.infrastructure.persistence` contains JPA entities, repositories, and adapters.
+- `notification.infrastructure.sender` contains the demo SMS/email sender adapter.
+
 ## Run locally
 
 Prerequisites: Java 17+, Maven 3.9+, and (for Kafka notifications) a Kafka broker at `localhost:9092`.

@@ -1,4 +1,4 @@
-package com.chubb.claims.notification;
+package com.chubb.claims.notification.infrastructure.kafka;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;

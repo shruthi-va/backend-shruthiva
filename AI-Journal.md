@@ -37,5 +37,15 @@ This journal records conversations without filtering by importance. New conversa
 - **Me:** Recommended prioritizing authentication and claim-level authorization, protecting Swagger and the H2 console, minimizing sensitive data in logs/Kafka/SMS/email, validating inputs and uploads, securing Kafka, and treating H2 as development/test-only. Emphasized audit trails for staff and manager actions.
 - **You:** Asked to be reminded about security before finishing.
 - **Me:** Agreed to revisit security before considering the design or implementation finished; clarified this is an in-chat reminder, not a timed notification.
+- **You:** Asked to create the claims system code in the initialized repository and chose to use `C:\Users\shruthi.va\Documents\Chubb\backend-shruthiva` directly after isolated-worktree setup failed because the repository had no initial commit.
+- **Me:** Added a Spring Boot modular-monolith starter with Java 17, H2, Swagger/OpenAPI, role-protected REST APIs, claim workflow, a Kafka status-event outbox, and integration tests. The SMS/email sender is a demo adapter only; no provider credentials or real delivery integration are configured.
+- **You:** Asked to move all controllers to a separate folder.
+- **Me:** Moved the REST controllers and API exception handler into `com.chubb.claims.controller`, updated the package declarations, and restricted staff claim lookup to unassigned or self-assigned claims.
+- **You:** Asked for the previously shown pictorial flow in a new file.
+- **Me:** Added `docs/claims-flow.md` with the Mermaid flow and linked it from the README.
+- **You:** Asked to segregate the notification files into suitable folders and refactor.
+- **Me:** Began separating notification application contracts/use cases from Kafka, persistence, and sender infrastructure, and updating the claims module to depend on a notification port.
+- **You:** Asked whether the journal had been updated.
+- **Me:** Updated this journal with the implementation and refactoring conversation.
 - **You:** Asked to proceed with creating the code from the discussed design, with amendments later if needed.
 - **Me:** Explained that code and build validation require a project workspace rather than this chat’s scratch directory, and asked for the exact workspace path and whether to use it directly or create an isolated worktree.

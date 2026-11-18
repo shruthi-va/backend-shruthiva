@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.chubb.claims.claim.domain.ClaimRecord;
 import com.chubb.claims.claim.domain.ClaimRepository;
-import com.chubb.claims.notification.StatusOutboxRepository;
+import com.chubb.claims.notification.infrastructure.persistence.StatusOutboxRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;

@@ -9,10 +9,8 @@ import com.chubb.claims.claim.domain.ClaimStatus;
 import com.chubb.claims.claim.domain.ClaimStatusHistory;
 import com.chubb.claims.claim.domain.FinalDecision;
 import com.chubb.claims.claim.domain.NotificationChannel;
-import com.chubb.claims.notification.StatusOutboxRecord;
-import com.chubb.claims.notification.StatusOutboxRepository;
+import com.chubb.claims.notification.application.StatusEventOutbox;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
@@ -20,13 +18,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ClaimService {
+public class ClaimService implements ClaimNotificationLookup {
 
     private static final Set<ClaimStatus> STAFF_QUEUE_STATUSES = Set.of(
             ClaimStatus.SUBMITTED,
@@ -42,11 +39,11 @@ public class ClaimService {
             Pattern.compile("^\\+[1-9][0-9]{7,14}$");
 
     private final ClaimRepository claims;
-    private final StatusOutboxRepository outbox;
+    private final StatusEventOutbox statusEventOutbox;
 
-    public ClaimService(ClaimRepository claims, StatusOutboxRepository outbox) {
+    public ClaimService(ClaimRepository claims, StatusEventOutbox statusEventOutbox) {
         this.claims = claims;
-        this.outbox = outbox;
+        this.statusEventOutbox = statusEventOutbox;
     }
 
     @Transactional
@@ -202,6 +199,7 @@ public class ClaimService {
     }
 
     @Transactional(readOnly = true)
+    @Override
     public ClaimNotificationTarget notificationTarget(UUID claimId) {
         ClaimRecord claim = findClaim(claimId);
         return new ClaimNotificationTarget(claim.getNotificationChannel(), claim.getNotificationAddress());
@@ -213,7 +211,7 @@ public class ClaimService {
             throw new ClaimExceptions.Conflict("The claim already has that status.");
         }
         claim.transitionTo(nextStatus, changedBy, reason);
-        outbox.save(new StatusOutboxRecord(claim.getId(), nextStatus));
+        statusEventOutbox.recordStatusChange(claim.getId(), nextStatus);
     }
 
     private ClaimRecord findClaim(UUID claimId) {

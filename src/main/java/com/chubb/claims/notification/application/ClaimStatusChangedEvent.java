@@ -1,4 +1,4 @@
-package com.chubb.claims.notification;
+package com.chubb.claims.notification.application;
 
 import com.chubb.claims.claim.domain.ClaimStatus;
 import java.time.Instant;

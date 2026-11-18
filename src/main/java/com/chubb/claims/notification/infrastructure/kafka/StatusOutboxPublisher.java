@@ -1,5 +1,8 @@
-package com.chubb.claims.notification;
+package com.chubb.claims.notification.infrastructure.kafka;
 
+import com.chubb.claims.notification.application.ClaimStatusChangedEvent;
+import com.chubb.claims.notification.infrastructure.persistence.StatusOutboxRecord;
+import com.chubb.claims.notification.infrastructure.persistence.StatusOutboxRepository;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
