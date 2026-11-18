@@ -2,7 +2,7 @@
 
 A Java 17 / Spring Boot modular-monolith starter for claim intake, review, manager decisions, reporting, and status-change notifications. It provides REST APIs only; Swagger UI is for API exploration and verification, not a claimant-facing frontend.
 
-[View the claims workflow diagram](docs/claims-flow.md).
+[View the application flow diagrams](docs/application-flow.md).
 
 ## Package layout
 

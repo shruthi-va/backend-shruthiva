@@ -47,5 +47,9 @@ This journal records conversations without filtering by importance. New conversa
 - **Me:** Began separating notification application contracts/use cases from Kafka, persistence, and sender infrastructure, and updating the claims module to depend on a notification port.
 - **You:** Asked whether the journal had been updated.
 - **Me:** Updated this journal with the implementation and refactoring conversation.
+- **You:** Asked to see a pictorial representation of the application flow.
+- **Me:** Prepared an updated view of the claim workflow and Kafka notification path, distinguishing the demo sender from real SMS/email delivery.
+- **You:** Asked to save both Mermaid diagrams in a file.
+- **Me:** Added `docs/application-flow.md` with the claim workflow and Kafka status-notification diagrams and linked it from the README.
 - **You:** Asked to proceed with creating the code from the discussed design, with amendments later if needed.
 - **Me:** Explained that code and build validation require a project workspace rather than this chat’s scratch directory, and asked for the exact workspace path and whether to use it directly or create an isolated worktree.
